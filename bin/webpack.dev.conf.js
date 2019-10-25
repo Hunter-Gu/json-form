@@ -4,7 +4,7 @@ const plugins = require('./plugins')
 const devPlugins = plugins.getDevHelperPlugins()
 
 const devConfig = {
-  devtool: 'heap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   watch: true,
   watchOptions: {
     ignored: [/node_modules/],
