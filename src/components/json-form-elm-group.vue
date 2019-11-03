@@ -1,19 +1,19 @@
 <template>
   <div class="json-form-elm-group">
-    <el-radio-group v-if="type === 'radio'" v-model="data" @input="handleInput" @blur="handleBlur">
-      <el-radio v-for="option in options" :key="option.value" :label="option.value" border="border">{{ option.label }}</el-radio>
+    <el-radio-group v-if="type === 'radio'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
+      <el-radio v-for="option in graftOptions" :key="option.value" :label="option.value" border="border" v-bind="option.props">{{ option.label }}</el-radio>
     </el-radio-group>
-    <el-radio-group v-else-if="type === 'radio-button'" v-model="data" @input="handleInput" @blur="handleBlur">
-      <el-radio-button v-for="option in options" :key="option.value" :label="option.label"></el-radio-button>
+    <el-radio-group v-else-if="type === 'radio-button'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
+      <el-radio-button v-for="option in graftOptions" :key="option.value" :label="option.label" v-bind="option.props"></el-radio-button>
     </el-radio-group>
-    <el-checkbox-group v-else-if="type === 'checkbox'" v-model="data" @input="handleInput" @blur="handleBlur">
-      <el-checkbox v-for="option in options" :label="option.label" :key="option.label" border="border">{{ option.label }}</el-checkbox>
+    <el-checkbox-group v-else-if="type === 'checkbox'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
+      <el-checkbox v-for="option in graftOptions" :key="option.value" :label="option.label" border="border" v-bind="option.props">{{ option.label }}</el-checkbox>
     </el-checkbox-group>
-    <el-checkbox-group v-else-if="type === 'checkbox-button'" v-model="data" @input="handleInput" @blur="handleBlur">
-      <el-checkbox-button v-for="option in options" :label="option.label" :key="option.label">{{ option.label }}</el-checkbox-button>
+    <el-checkbox-group v-else-if="type === 'checkbox-button'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
+      <el-checkbox-button v-for="option in graftOptions" :key="option.value" :label="option.label" v-bind="option.props">{{ option.label }}</el-checkbox-button>
     </el-checkbox-group>
-    <el-select v-else-if="type === 'select'" v-model="data" @change="handleInput" @blur="handleBlur">
-      <el-option v-for="option in options" :key="option.value" :label="option.label" :value="option.value"></el-option>
+    <el-select v-else-if="type === 'select'" v-model="data" @change="handleInput" @blur="handleBlur" v-bind="props">
+      <el-option v-for="option in graftOptions" :key="option.value" :label="option.label" :value="option.value" v-bind="option.props"></el-option>
     </el-select>
   </div>
 </template>
@@ -28,6 +28,10 @@ export default {
       type: Array,
       required: true
     },
+    props: {
+      type: Object,
+      default: () => ({})
+    },
     type: {
       type: String,
       required: true,
@@ -35,9 +39,7 @@ export default {
         return ['select', 'checkbox', 'checkbox-button', 'radio', 'radio-button'].indexOf(value) > -1
       }
     },
-    value: {
-
-    }
+    value: {}
   },
   data () {
     return {
@@ -66,6 +68,22 @@ export default {
       const list = ['checkbox', 'checkbox-button']
 
       return list.indexOf(this.type) > -1
+    },
+    graftOptions() {
+      const exceptions = ['label', 'value']
+
+      return this.options.map(option => {
+        const graft = { props: {} }
+        for (const key in option) {
+          const value = option[key]
+          if (exceptions.indexOf(key) === -1) {
+            graft.props[key] = value
+          } else {
+            graft[key] = value
+          }
+        }
+        return graft
+      })
     }
   },
   methods: {
