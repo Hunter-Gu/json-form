@@ -6,7 +6,9 @@
   "scripts": {
     "start": "cross-env HMR=true NODE_ENV=development PARALLEL=true WEBPACK=all webpack --inline --config ./bin/webpack.dev.conf.js",
     "build": "cross-env NODE_ENV=production PARALLEL=true webpack --config ./bin/webpack.prod.conf.js",
-    "release": "standard-version"
+    "release": "standard-version",
+    "doc:dev": "vuepress dev docs",
+    "doc:build": "vuepress build docs"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -21,6 +23,7 @@
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "docsify-cli": "^4.3.0",
+    "element-ui": "^2.12.0",
     "file-loader": "^3.0.1",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "mini-css-extract-plugin": "^0.5.0",
@@ -37,6 +40,7 @@
     "url-loader": "^1.1.2",
     "vue-loader": "^15.6.4",
     "vue-template-compiler": "^2.6.8",
+    "vuepress": "^1.2.0",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "webpack-manifest-plugin": "^2.0.4",
