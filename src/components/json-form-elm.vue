@@ -1,20 +1,22 @@
 <template>
   <el-form-item
     :label="json.label"
-    :class="{'json-form-elm': true, 'is-required': json.required }">
+    :class="{'json-form-elm': true, 'is-required': json.required }"
+  >
     <component
       :is="json.name"
-      v-bind="ui"
       v-model="data"
+      v-bind="ui"
       @input="handleInput"
-      @blur="handleBlur"></component>
-    <div class="json-form-elm_error-msg" v-if="bluredErrMsg || inputErrMsg">{{ bluredErrMsg || inputErrMsg }}</div>
+      @blur="handleBlur"
+    />
+    <div v-if="bluredErrMsg || inputErrMsg" class="json-form-elm_error-msg">{{ bluredErrMsg || inputErrMsg }}</div>
   </el-form-item>
 </template>
 
 <script>
 import JsonFormElmGroup from '@/components/json-form-elm-group.vue'
-import { isPlainObj, isRegExp } from '@/utils/util.js'
+import { isRegExp } from '@/utils/util.js'
 
 const strategy = {
   radio: () => ({ name: 'JsonFormElmGroup', type: 'radio' }),
@@ -25,11 +27,12 @@ const strategy = {
 
   string: () => ({ name: 'ElInput' }),
   number: () => ({ name: 'ElInputNumber' }),
-  switch: () => ({ name: 'ElSwitch', type: 'switch' }),
+  switch: () => ({ name: 'ElSwitch', type: 'switch' })
 }
 
 export default {
   name: 'JsonFormElm',
+  components: { JsonFormElmGroup },
   props: {
     jsonSchema: {
       type: Object,
@@ -39,9 +42,12 @@ export default {
       type: Object,
       default: () => ({})
     },
-    value: {}
+    value: {
+      type: Object,
+      default: () => ({})
+    }
   },
-  data () {
+  data() {
     return {
       json: {},
       ui: {},
@@ -51,57 +57,60 @@ export default {
     }
   },
   computed: {
-    bluredErrMsg () {
+    bluredErrMsg() {
       if (!this.blured) return ''
 
-      const  { json, json: { label }, data } = this
+      const { json, json: { label }, data } = this
       if (json.required && ((data === null) || data === undefined || data === '')) {
         return '请输入' + label
+      } else {
+        return ''
       }
     },
-    inputErrMsg () {
+    inputErrMsg() {
       if (!this.inputed) return ''
 
-      const  { json: { label, validator, errMsg }, data } = this
+      const { json: { label, validator, errMsg }, data } = this
 
       if ((typeof validator === 'function' && !validator(data)) ||
         isRegExp(validator) && !validator.test(data)) {
         return errMsg || '请输入正确的' + label
+      } else {
+        return ''
       }
     }
   },
   watch: {
     jsonSchema: {
       immediate: true,
-      handler (val) {
+      handler(val) {
         this.normalize(val)
       }
     },
     uiSchema: {
       immediate: true,
-      handler (val) {
+      handler(val) {
 
       }
     },
     value: {
       immediate: true,
-      handler (value) {
+      handler(value) {
         this.data = value
       }
     }
   },
-  components: { JsonFormElmGroup },
   methods: {
-    handleBlur () {
+    handleBlur() {
       this.blured = true
       this.inputed = false
     },
-    handleInput (value) {
+    handleInput(value) {
       this.blured = false
       this.inputed = true
       this.$emit('input', value)
     },
-    normalize () {
+    normalize() {
       const schema = this.json = { ...this.jsonSchema }
       const props = this.ui = { ...this.props }
       const { type, name } = schema
@@ -110,13 +119,13 @@ export default {
       schema.name = info.name
       this._padProps(props, info)
     },
-    _padProps (props, info) {
+    _padProps(props, info) {
       if ('type' in info) {
         props.type = info.type
         this._graftProps(props)
       }
     },
-    _graftProps (props) {
+    _graftProps(props) {
       const exceptions = ['options', 'type']
       const graft = {}
       for (const key in props) {
@@ -128,7 +137,7 @@ export default {
 
       props.props = graft
     },
-    infer (type, name) {
+    infer(type, name) {
       if (type in strategy) {
         return strategy[type]()
       } else if (name) {
@@ -136,7 +145,7 @@ export default {
       } else {
         throw new Error(`[ERROR]: type [${type}] is not supported, please provide name option to declare component`)
       }
-    },
+    }
   }
 }
 </script>

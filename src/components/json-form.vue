@@ -4,15 +4,18 @@
     <div v-for="(elmSchema, elmKey) in jsonSchema.properties" :key="elmKey">
       <JsonForm
         v-if="elmSchema.type === 'object'"
+        v-model="value[elmKey]"
         :json-schema="elmSchema"
         :ui-schema="uiSchema[elmKey] || {}"
-        @input="handleInput" v-model="value[elmKey]"></JsonForm>
+        @input="handleInput"
+      />
       <el-form v-else>
         <JsonFormElm
+          v-model="value[elmKey]"
           :json-schema="elmSchema"
           :props="uiSchema[elmKey]"
           @input="handleInput"
-          v-model="value[elmKey]"></JsonFormElm>
+        />
       </el-form>
     </div>
   </fieldset>
@@ -24,6 +27,7 @@ import JsonFormElm from '@/components/json-form-elm.vue'
 
 export default {
   name: 'JsonForm',
+  components: { JsonFormElm },
 
   props: {
     jsonSchema: {
@@ -39,9 +43,8 @@ export default {
       default: () => ({})
     }
   },
-  components: { JsonFormElm },
   methods: {
-    handleInput () {
+    handleInput() {
       this.$emit('input', this.value)
     }
   }

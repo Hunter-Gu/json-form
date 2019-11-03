@@ -1,26 +1,24 @@
 <template>
   <div class="json-form-elm-group">
-    <el-radio-group v-if="type === 'radio'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
+    <el-radio-group v-if="type === 'radio'" v-model="data" v-bind="props" @input="handleInput" @blur="handleBlur">
       <el-radio v-for="option in graftOptions" :key="option.value" :label="option.value" border="border" v-bind="option.props">{{ option.label }}</el-radio>
     </el-radio-group>
-    <el-radio-group v-else-if="type === 'radio-button'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
-      <el-radio-button v-for="option in graftOptions" :key="option.value" :label="option.label" v-bind="option.props"></el-radio-button>
+    <el-radio-group v-else-if="type === 'radio-button'" v-model="data" v-bind="props" @input="handleInput" @blur="handleBlur">
+      <el-radio-button v-for="option in graftOptions" :key="option.value" :label="option.label" v-bind="option.props" />
     </el-radio-group>
-    <el-checkbox-group v-else-if="type === 'checkbox'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
+    <el-checkbox-group v-else-if="type === 'checkbox'" v-model="data" v-bind="props" @input="handleInput" @blur="handleBlur">
       <el-checkbox v-for="option in graftOptions" :key="option.value" :label="option.label" border="border" v-bind="option.props">{{ option.label }}</el-checkbox>
     </el-checkbox-group>
-    <el-checkbox-group v-else-if="type === 'checkbox-button'" v-model="data" @input="handleInput" @blur="handleBlur" v-bind="props">
+    <el-checkbox-group v-else-if="type === 'checkbox-button'" v-model="data" v-bind="props" @input="handleInput" @blur="handleBlur">
       <el-checkbox-button v-for="option in graftOptions" :key="option.value" :label="option.label" v-bind="option.props">{{ option.label }}</el-checkbox-button>
     </el-checkbox-group>
-    <el-select v-else-if="type === 'select'" v-model="data" @change="handleInput" @blur="handleBlur" v-bind="props">
-      <el-option v-for="option in graftOptions" :key="option.value" :label="option.label" :value="option.value" v-bind="option.props"></el-option>
+    <el-select v-else-if="type === 'select'" v-model="data" v-bind="props" @change="handleInput" @blur="handleBlur">
+      <el-option v-for="option in graftOptions" :key="option.value" :label="option.label" :value="option.value" v-bind="option.props" />
     </el-select>
   </div>
 </template>
 
 <script>
-import { isPlainObj } from '@/utils/util.js'
-
 export default {
   name: 'JsonFormElmGroup',
   props: {
@@ -35,36 +33,27 @@ export default {
     type: {
       type: String,
       required: true,
-      validator (value) {
+      validator(value) {
         return ['select', 'checkbox', 'checkbox-button', 'radio', 'radio-button'].indexOf(value) > -1
       }
     },
-    value: {}
+    value: {
+      type: Object,
+      default: () => ({})
+    }
   },
-  data () {
+  data() {
     return {
       data: null
     }
   },
-  watch: {
-    value: {
-      immediate: true,
-      handler (value) {
-        if (this.filter) {
-          this.data = this._handleValue(value)
-        } else {
-          this.data = value
-        }
-      }
-    },
-  },
   computed: {
-    filter () {
+    filter() {
       const list = ['radio-button', 'checkbox', 'checkbox-button']
 
       return list.indexOf(this.type) > -1
     },
-    filterArray () {
+    filterArray() {
       const list = ['checkbox', 'checkbox-button']
 
       return list.indexOf(this.type) > -1
@@ -73,7 +62,7 @@ export default {
       const exceptions = ['label', 'value']
 
       return this.options.map(option => {
-        const graft = { props: {} }
+        const graft = { props: {}}
         for (const key in option) {
           const value = option[key]
           if (exceptions.indexOf(key) === -1) {
@@ -86,8 +75,20 @@ export default {
       })
     }
   },
+  watch: {
+    value: {
+      immediate: true,
+      handler(value) {
+        if (this.filter) {
+          this.data = this._handleValue(value)
+        } else {
+          this.data = value
+        }
+      }
+    }
+  },
   methods: {
-    _handleValue (value) {
+    _handleValue(value) {
       if (this.filterArray) {
         if (!Array.isArray(value)) {
           throw new Error('[ERROR]: the value of type checkbox or checkbox-button must be array')
@@ -97,14 +98,14 @@ export default {
         return this._findFromArray(this.options, value, 'value', 'label')
       }
     },
-    handleInput (value) {
+    handleInput(value) {
       if (this.filter) {
         this._handleFilterInput(value)
       } else {
         this.$emit('input', value)
       }
     },
-    _handleFilterInput (label) {
+    _handleFilterInput(label) {
       let value = null
 
       if (this.filterArray) {
@@ -115,7 +116,7 @@ export default {
 
       this.$emit('input', value)
     },
-    _findFromArray (options, target, key, targetKey) {
+    _findFromArray(options, target, key, targetKey) {
       let find = null
       options.some(option => {
         const result = option[key] === target
@@ -127,7 +128,7 @@ export default {
 
       return find
     },
-    _pickFromArray (options, target, key, targetKey) {
+    _pickFromArray(options, target, key, targetKey) {
       const picks = []
       options.forEach(option => {
         if (target.indexOf(option[key]) > -1) {
@@ -137,10 +138,10 @@ export default {
 
       return picks
     },
-    handleBlur () {
+    handleBlur() {
       this.$emit('blur', ...arguments)
     },
-    needFilter (type = this.type) {
+    needFilter(type = this.type) {
       const list = ['radio-button', 'checkbox']
 
       return list.indexOf(type) > -1

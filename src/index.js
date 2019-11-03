@@ -1,6 +1,6 @@
 import JsonForm from '@/components/json-form.vue'
 
-JsonForm.install = function (Vue) {
+JsonForm.install = function(Vue) {
   Vue.component(JsonForm.name, JsonForm)
 }
 
