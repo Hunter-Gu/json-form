@@ -16,6 +16,18 @@
 import JsonFormElmGroup from '@/components/json-form-elm-group.vue'
 import { isPlainObj, isRegExp } from '@/utils/util.js'
 
+const strategy = {
+  radio: () => ({ name: 'JsonFormElmGroup', type: 'radio' }),
+  checkbox: () => ({ name: 'JsonFormElmGroup', type: 'checkbox' }),
+  'radio-button': () => ({ name: 'JsonFormElmGroup', type: 'radio-button' }),
+  'checkbox-button': () => ({ name: 'JsonFormElmGroup', type: 'checkbox-button' }),
+  select: () => ({ name: 'JsonFormElmGroup', type: 'select' }),
+
+  string: () => ({ name: 'ElInput' }),
+  number: () => ({ name: 'ElInputNumber' }),
+  switch: () => ({ name: 'ElSwitch', type: 'switch' }),
+}
+
 export default {
   name: 'JsonFormElm',
   props: {
@@ -27,13 +39,7 @@ export default {
       type: Object,
       default: () => ({})
     },
-    value: {
-
-    },
-    accept: {
-      type: String,
-      default: ''
-    }
+    value: {}
   },
   data () {
     return {
@@ -102,31 +108,27 @@ export default {
       const info = this.infer(type, name)
 
       schema.name = info.name
-
       this._padProps(props, info)
     },
     _padProps (props, info) {
       if ('type' in info) {
         props.type = info.type
-      }
-
-      if (('maxSize' in info) && !('maxSize' in props)) {
-        props.maxSize = info.maxSize
+        this._graftProps(props)
       }
     },
-    infer (type, name) {
-      const strategy = {
-        radio: () => ({ name: 'JsonFormElmGroup', type: 'radio' }),
-        checkbox: () => ({ name: 'JsonFormElmGroup', type: 'checkbox' }),
-        'radio-button': () => ({ name: 'JsonFormElmGroup', type: 'radio-button' }),
-        'checkbox-button': () => ({ name: 'JsonFormElmGroup', type: 'checkbox-button' }),
-        select: () => ({ name: 'JsonFormElmGroup', type: 'select' }),
+    _graftProps (props) {
+      const exceptions = ['options', 'type']
+      const graft = {}
+      for (const key in props) {
+        if (exceptions.indexOf(key) !== -1) continue
 
-        string: () => ({ name: 'ElInput' }),
-        number: () => ({ name: 'ElInputNumber' }),
-        switch: () => ({ name: 'ElSwitch', type: 'switch' }),
+        graft[key] = props[key]
+        delete props[key]
       }
 
+      props.props = graft
+    },
+    infer (type, name) {
       if (type in strategy) {
         return strategy[type]()
       } else if (name) {
