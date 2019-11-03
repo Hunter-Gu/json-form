@@ -21,3 +21,7 @@ proxy-table.dev.js
 /views
 .vscode
 .idea
+
+deploy.sh
+
+docs/.vuepress/dist

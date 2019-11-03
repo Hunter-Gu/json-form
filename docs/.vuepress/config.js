@@ -5,6 +5,7 @@ const resolve = function(dir = '') {
 }
 
 module.exports = {
+  base: "/json-form/",
   themeConfig: {
     sidebar: 'auto',
     // displayAllHeaders: true // 默认值：false
