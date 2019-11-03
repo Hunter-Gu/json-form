@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>json-form</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/json-form/assets/css/0.styles.8fcb0ec8.css" as="style"><link rel="preload" href="/json-form/assets/js/app.ba4bb592.js" as="script"><link rel="preload" href="/json-form/assets/js/2.cee6ec59.js" as="script"><link rel="preload" href="/json-form/assets/js/8.f1df32f4.js" as="script"><link rel="preload" href="/json-form/assets/js/6.5146f6c9.js" as="script"><link rel="preload" href="/json-form/assets/js/4.99612668.js" as="script"><link rel="prefetch" href="/json-form/assets/js/3.b76be506.js"><link rel="prefetch" href="/json-form/assets/js/5.363cc316.js"><link rel="prefetch" href="/json-form/assets/js/7.169002e7.js">
+    <link rel="stylesheet" href="/json-form/assets/css/0.styles.8fcb0ec8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/json-form/" class="home-link router-link-exact-active router-link-active"></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>json-form</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/json-form/#基本用法" class="sidebar-link">基本用法</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/json-form/#radio-checkbox-select" class="sidebar-link">Radio &amp;&amp; Checkbox &amp;&amp; Select</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/json-form/#自定义组件" class="sidebar-link">自定义组件</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/json-form/#属性" class="sidebar-link">属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/json-form/#json-schema" class="sidebar-link">json-schema</a></li><li class="sidebar-sub-header"><a href="/json-form/#ui-schema" class="sidebar-link">ui-schema</a></li><li class="sidebar-sub-header"><a href="/json-form/#value" class="sidebar-link">value</a></li></ul></li><li><a href="/json-form/#事件" class="sidebar-link">事件</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="json-form"><a href="#json-form" class="header-anchor">#</a> json-form</h1> <p><code>JsonForm</code> 组件是一个根据 JSON 格式， 渲染最终视图的组件， 多用于表单的渲染， 当然也是支持渲染自定义组件的。</p> <p>将视图的渲染， 属性的设置， 值的同步三者分离的方式， 提供三个属性：</p> <ul><li><code>json-schema</code>: 用于描述视图</li> <li><code>ui-schema</code>: 用于为视图中的组件添加样式</li> <li><code>value</code>: 视图中的组件对应的值， 也可以是 <code>v-model</code></li></ul> <p>详见<a href="#%E5%B1%9E%E6%80%A7">属性</a>。 下面是几个具体的例子。</p> <h2 id="基本用法"><a href="#基本用法" class="header-anchor">#</a> 基本用法</h2> <ul><li>通过 <code>title</code> + <code>type: 'object'</code> + <code>properties</code> 可以定义嵌套组件</li> <li>通过 <code>label</code> + <code>type</code> 可以定义基础组件</li></ul> <p>例子如下：</p> <div class="simple-demo"><fieldset class="json-form" data-v-2576d29e><legend data-v-2576d29e>基本用法</legend> <div data-v-2576d29e><form class="el-form" data-v-2576d29e><div class="el-form-item json-form-elm" data-v-1eb51362 data-v-2576d29e><label class="el-form-item__label">姓名</label><div class="el-form-item__content"><div class="el-input" data-v-1eb51362><!----><input type="text" autocomplete="off" class="el-input__inner"><!----><!----><!----><!----></div> <!----><!----></div></div></form></div><div data-v-2576d29e><form class="el-form" data-v-2576d29e><div class="el-form-item json-form-elm" data-v-1eb51362 data-v-2576d29e><label class="el-form-item__label">班级</label><div class="el-form-item__content"><div class="el-input" data-v-1eb51362><!----><input type="text" autocomplete="off" class="el-input__inner"><!----><!----><!----><!----></div> <!----><!----></div></div></form></div><div data-v-2576d29e><form class="el-form" data-v-2576d29e><div class="el-form-item json-form-elm" data-v-1eb51362 data-v-2576d29e><label class="el-form-item__label">年龄</label><div class="el-form-item__content"><div class="el-input-number" data-v-1eb51362><span role="button" class="el-input-number__decrease"><i class="el-icon-minus"></i></span><span role="button" class="el-input-number__increase"><i class="el-icon-plus"></i></span><div class="el-input"><!----><input type="text" autocomplete="off" max="Infinity" min="-Infinity" class="el-input__inner"><!----><!----><!----><!----></div></div> <!----><!----></div></div></form></div></fieldset></div> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>simple-demo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>JsonForm</span> <span class="token attr-name">:json-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>jsonSchema<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>value<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'SimpleDemo'</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      jsonSchema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">'基本用法'</span><span class="token punctuation">,</span>
+        type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+        properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          name<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'string'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          grade<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'班级'</span><span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'string'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          age<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'年龄'</span><span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'number'</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      value<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="radio-checkbox-select"><a href="#radio-checkbox-select" class="header-anchor">#</a> Radio &amp;&amp; Checkbox &amp;&amp; Select</h2> <p>通过将 <code>type</code> 属性声明为 <code>radio</code> 或 <code>checkbox</code> 或 <code>select</code> 就可以生成对应的组件， 其中：</p> <ul><li><code>radio</code> 利用了 <code>el-radio-group</code> 组件和 <code>el-radio(-button)</code> 组件</li> <li><code>checkbox</code> 利用了 <code>el-checkbox-group</code> 组件和 <code>el-checkbox(-button)</code> 组件</li></ul> <p>在使用时， 通过 <code>ui-schema</code> 的 <code>options</code> 属性声明每个项， 并且 <strong><code>options</code> 中除 <code>label</code> 和 <code>value</code> 以外的项， 会作为各个基本选项组件各自的属性！ 而和 <code>options</code> 同级的， 会是 <code>group</code> 的属性！</strong></p> <p>如：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> json <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ... 此处省略不重要信息</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    select<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      type<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'选择'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> ui <span class="token operator">=</span> <span class="token punctuation">{</span>
+  select<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      label<span class="token punctuation">:</span> <span class="token string">'选项一'</span><span class="token punctuation">,</span>
+      value<span class="token punctuation">:</span> 'option <span class="token number">1</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+    }, {
+      label: '选项二',
+      value: 'option 2</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      <span class="token comment">// 除 `label` 和 `value` 外的属性， 作为 `el-option` 的属性</span>
+      disabled<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 作为 `el-select` 组件的属性</span>
+    multiple<span class="token punctuation">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="radio-checbox-select-demo" data-v-bb8a2524><fieldset class="json-form" data-v-2576d29e data-v-bb8a2524><legend data-v-2576d29e>Radio &amp;&amp; Checkbox &amp;&amp; Select</legend> <div data-v-2576d29e><form class="el-form" data-v-2576d29e><div class="el-form-item json-form-elm" data-v-1eb51362 data-v-2576d29e><label class="el-form-item__label">学历</label><div class="el-form-item__content"><div class="json-form-elm-group" data-v-1eb51362><div class="el-select"><div class="el-select__tags" style="max-width:-32px;width:100%;"><!----><span></span><!----></div><div class="el-input el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up"></i><!----><!----><!----><!----><!----></span><!----></span><!----><!----></div><div class="el-select-dropdown el-popper is-multiple" style="min-width:;display:none;"><div class="el-scrollbar" style="display:none;"><div class="el-select-dropdown__wrap el-scrollbar__wrap el-scrollbar__wrap--hidden-default"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item"><span>小学</span></li><li class="el-select-dropdown__item"><span>初中</span></li><li class="el-select-dropdown__item"><span>高中</span></li><li class="el-select-dropdown__item"><span>大学</span></li><li class="el-select-dropdown__item"><span>更高学历</span></li></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="width:0;transform:translateX(0%);ms-transform:translateX(0%);webkit-transform:translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="height:0;transform:translateY(0%);ms-transform:translateY(0%);webkit-transform:translateY(0%);"></div></div></div><p class="el-select-dropdown__empty">
+          无数据
+        </p></div></div></div> <!----><!----></div></div></form></div><div data-v-2576d29e><form class="el-form" data-v-2576d29e><div class="el-form-item json-form-elm" data-v-1eb51362 data-v-2576d29e><label class="el-form-item__label">性别</label><div class="el-form-item__content"><div class="json-form-elm-group" data-v-1eb51362><div role="radiogroup" class="el-radio-group"><label role="radio" tabindex="-1" class="el-radio is-bordered"><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="man" class="el-radio__original"></span><span class="el-radio__label">男<!----></span></label><label role="radio" tabindex="-1" class="el-radio is-bordered"><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="woman" class="el-radio__original"></span><span class="el-radio__label">女<!----></span></label><label role="radio" tabindex="-1" class="el-radio is-bordered"><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="secret" class="el-radio__original"></span><span class="el-radio__label">保密<!----></span></label></div></div> <!----><!----></div></div></form></div><div data-v-2576d29e><form class="el-form" data-v-2576d29e><div class="el-form-item json-form-elm" data-v-1eb51362 data-v-2576d29e><label class="el-form-item__label">爱好</label><div class="el-form-item__content"><div class="json-form-elm-group" data-v-1eb51362><div role="group" aria-label="checkbox-group" class="el-checkbox-group"><label class="el-checkbox is-disabled is-bordered"><span class="el-checkbox__input is-disabled"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" disabled="disabled" value="购物" class="el-checkbox__original"></span><span class="el-checkbox__label">购物<!----></span></label><label class="el-checkbox is-bordered"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" value="运动" class="el-checkbox__original"></span><span class="el-checkbox__label">运动<!----></span></label><label class="el-checkbox is-bordered"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" value="上网" class="el-checkbox__original"></span><span class="el-checkbox__label">上网<!----></span></label><label class="el-checkbox is-bordered"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" value="烹饪" class="el-checkbox__original"></span><span class="el-checkbox__label">烹饪<!----></span></label><label class="el-checkbox is-bordered"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" value="更多" class="el-checkbox__original"></span><span class="el-checkbox__label">更多<!----></span></label></div></div> <!----><!----></div></div></form></div></fieldset></div> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>radio-checbox-select-demo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>JsonForm</span> <span class="token attr-name">:json-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>jsonSchema<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:ui-schema</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>ui<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>value<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'RadioChecboxSelectDemo'</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      jsonSchema<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        title<span class="token punctuation">:</span> <span class="token string">'Radio &amp;&amp; Checkbox &amp;&amp; Select'</span><span class="token punctuation">,</span>
+        type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+        properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          edu<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'学历'</span><span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'select'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          sex<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'radio'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          hobbies<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'爱好'</span><span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'checkbox'</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      ui<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        edu<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          options<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'小学'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'primary'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'初中'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'junior'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'高中'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'senior'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'大学'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'university'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'更高学历'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'higher'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+          multiple<span class="token punctuation">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        sex<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          options<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'男'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'man'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'女'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'woman'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'保密'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'secret'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        hobbies<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          options<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'购物'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'shopping'</span><span class="token punctuation">,</span>
+            disabled<span class="token punctuation">:</span> <span class="token boolean">true</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'运动'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'sports'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'上网'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'surfing Internet'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'烹饪'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'cooking'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            label<span class="token punctuation">:</span> <span class="token string">'更多'</span><span class="token punctuation">,</span>
+            value<span class="token punctuation">:</span> <span class="token string">'more'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      value<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        hobbies<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.radio-checbox-select-demo &gt; .json-form</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="自定义组件"><a href="#自定义组件" class="header-anchor">#</a> 自定义组件</h2> <p>在通过 <code>type</code> 内置的组件无法满足所有需求时， 可以通过 <code>name</code> 字段声明使用自定义组件， 但是<strong>目标组件必须注册为全局组件</strong>。</p> <p>在编写自动以组件时， 必须满足一下规则：</p> <ul><li>自定义组件必须提供 <code>value</code> props， 以表示组件的值；</li> <li>必须 emit <code>input|change</code> 事件， 因为最终的值会通过 <code>value</code> + <code>input</code> 一层层向上派发， 并且在对值进行验证时， 也需要用到这一事件；</li> <li>通过 emit <code>blur</code> 事件， 在触发时对值的必填进行验证。</li></ul> <p>在使用自定义组件时， 很可能需要额外的 <code>props</code>， 这时候可以通过 <code>ui-schema</code> 进行 props 的声明：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// json-schema</span>
+<span class="token punctuation">{</span>
+  title<span class="token punctuation">:</span> <span class="token string">'使用自定义组件'</span><span class="token punctuation">,</span>
+  type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    custom<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'{自定义组件的名字}'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'自定义组件'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ui-schema</span>
+<span class="token punctuation">{</span>
+  custom<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    props1<span class="token punctuation">:</span> <span class="token operator">...</span><span class="token punctuation">,</span>
+    props2<span class="token punctuation">:</span> <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="属性"><a href="#属性" class="header-anchor">#</a> 属性</h2> <table><thead><tr><th>参数</th> <th>说明</th> <th>类型</th> <th>可选值</th> <th>默认值</th></tr></thead> <tbody><tr><td>json-schema</td> <td>用于生成视图 view 的 json 结构</td> <td>Object</td> <td>-</td> <td>{}</td></tr> <tr><td>ui-schema</td> <td>视图的属性</td> <td>Object</td> <td>-</td> <td>{}</td></tr> <tr><td>value</td> <td>视图对应的值</td> <td>Object</td> <td>-</td> <td>{}</td></tr></tbody></table> <h3 id="json-schema"><a href="#json-schema" class="header-anchor">#</a> json-schema</h3> <p>用于生成视图 view 的 json 结构， 最基本格式如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  title<span class="token punctuation">:</span> <span class="token string">'form 的标题'</span><span class="token punctuation">,</span>
+  type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    upload<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="type"><a href="#type" class="header-anchor">#</a> <code>type</code></h4> <p>type 属性表示最终渲染的组件， 其映射关系如下：</p> <table><thead><tr><th><code>type</code> 的值</th> <th>对应的组件</th></tr></thead> <tbody><tr><td>string</td> <td>ElInput</td></tr> <tr><td>number</td> <td>ElInputNumber</td></tr> <tr><td>radio</td> <td>ElRadio</td></tr> <tr><td>radio-button</td> <td>ElRadio</td></tr> <tr><td>select</td> <td>ElSelect</td></tr> <tr><td>checkbox</td> <td>ElCheckbox</td></tr> <tr><td>checkbox-button</td> <td>ElCheckbox</td></tr> <tr><td>switch</td> <td>ElSwitch</td></tr> <tr><td>object</td> <td>用作多层嵌套的情况</td></tr></tbody></table> <p>如果 <code>type</code> 的值不在上面的范围， 那么需要指定 <code>name</code> 字段来声明渲染的组件， 详见 <a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6">自定义组件</a>。</p> <h4 id="required"><a href="#required" class="header-anchor">#</a> <code>required</code></h4> <p>通过 <code>required</code> 字段标识必填项， 在触发 <code>blur</code> 事件时会验证， 如果值为空就会展示错误信息。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  title<span class="token punctuation">:</span> <span class="token string">'form 的标题'</span><span class="token punctuation">,</span>
+  type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    upload<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'ElInput'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'输入信息'</span><span class="token punctuation">,</span>
+      required<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="validator"><a href="#validator" class="header-anchor">#</a> <code>validator</code></h4> <p>可以通过 validator 对最终的值进行验证， 并显示提示信息：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  title<span class="token punctuation">:</span> <span class="token string">'form 的标题'</span><span class="token punctuation">,</span>
+  type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    upload<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'ElInput'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'姓名'</span>
+      required<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    number<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'ElInput'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'年龄'</span><span class="token punctuation">,</span>
+      <span class="token function">validator</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>val <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      errMsg<span class="token punctuation">:</span> <span class="token string">'年龄必须小于 20 岁'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    phone<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'ElInput'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'手机号'</span><span class="token punctuation">,</span>
+      validator<span class="token punctuation">:</span> <span class="token regex">/^1\d{10}$/</span><span class="token punctuation">,</span>
+      errMsg<span class="token punctuation">:</span> <span class="token string">'手机号必须以 1 开头的 11 位数字'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如上所示， 支持 <code>RegExp</code> 和 <code>Function</code> 类型， 如果是 <code>Function</code> 类型， 则会将当前的值作为参数。</p> <h4 id="errmsg"><a href="#errmsg" class="header-anchor">#</a> <code>errMsg</code></h4> <p>通过 <code>errMsg</code> 字段声明错误提示， 否则使用默认的错误信息。</p> <h4 id="nested"><a href="#nested" class="header-anchor">#</a> Nested</h4> <p>支持多层嵌套， 只需要将 <code>type</code> 声明为 'object' 即可：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  title<span class="token punctuation">:</span> <span class="token string">'form 的标题'</span><span class="token punctuation">,</span>
+  type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    persnalInfo<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+      title<span class="token punctuation">:</span> <span class="token string">'个人信息'</span><span class="token punctuation">,</span>
+      properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          type<span class="token punctuation">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+          label<span class="token punctuation">:</span> <span class="token string">'姓名'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        record<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+          title<span class="token punctuation">:</span> <span class="token string">'履历'</span><span class="token punctuation">,</span>
+          properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            primary<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+              label<span class="token punctuation">:</span> <span class="token string">'小学'</span><span class="token punctuation">,</span>
+              type<span class="token punctuation">:</span> <span class="token string">'string'</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            middle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+              label<span class="token punctuation">:</span> <span class="token string">'中学'</span><span class="token punctuation">,</span>
+              type<span class="token punctuation">:</span> <span class="token string">'string'</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="ui-schema"><a href="#ui-schema" class="header-anchor">#</a> <code>ui-schema</code></h3> <p>对应于视图中组件的 <code>props</code>， 需要和 <code>json-schema</code> 中的 <code>properties</code> 的 key 值对应。</p> <p><strong>在使用 <code>type</code> 为 <code>radio</code>, <code>radio-button</code>, <code>select</code>, <code>checkbox</code>, <code>checkbox-button</code> 其中之一的值时， 一定要通过该属性声明 options 选项</strong>：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// json-schema</span>
+<span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+  title<span class="token punctuation">:</span> <span class="token string">'下拉选项'</span><span class="token punctuation">,</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    select<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      type<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'选择'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ui-schema</span>
+<span class="token punctuation">{</span>
+  select<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        label<span class="token punctuation">:</span> <span class="token string">'选项 1'</span><span class="token punctuation">,</span>
+        value<span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        label<span class="token punctuation">:</span> <span class="token string">'选项 2'</span><span class="token punctuation">,</span>
+        value<span class="token punctuation">:</span> <span class="token number">2</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>另外， 正如 <a href="#radio-checkbox-select">Radio &amp;&amp; Checkbox &amp;&amp; Select</a> 部分所说， <strong><code>options</code> 中除 <code>label</code> 和 <code>value</code> 以外的项， 会作为各个基本选项组件各自的属性！ 而和 <code>options</code> 同级的， 会是 <code>group</code> 的属性！</strong></p> <p>甚至可以利用该属性来声明 <code>style</code>：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  select<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    style<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      background<span class="token punctuation">:</span> <span class="token string">'red'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="value"><a href="#value" class="header-anchor">#</a> <code>value</code></h3> <p>对应视图中组件的 value， 同样需要和 json-schema 中的 key 值对应。</p> <p><strong>在 <code>type</code> 为 <code>checkbox</code>, <code>checkbox-button</code> 的情况时， 一定要注意其值必须声明， 并且为数组</strong>， 否则无法通过 <code>v-model</code> 实现绑定：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// json-schema</span>
+<span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">'object'</span><span class="token punctuation">,</span>
+  title<span class="token punctuation">:</span> <span class="token string">'下拉选项'</span><span class="token punctuation">,</span>
+  properties<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    select<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      type<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
+      label<span class="token punctuation">:</span> <span class="token string">'选择'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// value</span>
+<span class="token punctuation">{</span>
+  <span class="token comment">// 必须声明</span>
+  select<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="事件"><a href="#事件" class="header-anchor">#</a> 事件</h2> <table><thead><tr><th>事件名</th> <th>说明</th> <th>回调参数</th></tr></thead> <tbody><tr><td>input</td> <td>数据改变后， 触发 input 事件</td> <td>变化后的值</td></tr></tbody></table></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/json-form/assets/js/app.ba4bb592.js" defer></script><script src="/json-form/assets/js/2.cee6ec59.js" defer></script><script src="/json-form/assets/js/8.f1df32f4.js" defer></script><script src="/json-form/assets/js/6.5146f6c9.js" defer></script><script src="/json-form/assets/js/4.99612668.js" defer></script>
+  </body>
+</html>
