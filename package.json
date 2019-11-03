@@ -4,6 +4,7 @@
   "description": "A Vue component what can describe forms by json schema",
   "main": "./lib/index.js",
   "scripts": {
+    "preinstall": "npm run build",
     "start": "cross-env HMR=true NODE_ENV=development PARALLEL=true WEBPACK=all webpack --inline --config ./bin/webpack.dev.conf.js",
     "build": "cross-env NODE_ENV=production PARALLEL=true webpack --config ./bin/webpack.prod.conf.js",
     "release": "standard-version",
