@@ -1,6 +1,6 @@
 {
   "name": "json-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vue component what can describe forms by json schema",
   "main": "./lib/index.js",
   "scripts": {
